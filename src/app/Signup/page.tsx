@@ -85,6 +85,9 @@ export default function SignupPage() {
       <Link href="/Login" className="text-white mt-4">
         Visit Login
       </Link>
+      <Link href="/forgotPassword" className="text-white mt-4">
+        Forgot Passord
+      </Link>
     </div>
   );
 }
