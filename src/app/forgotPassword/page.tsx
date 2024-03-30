@@ -1,11 +1,13 @@
 "use client";
 import Axios from "axios";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleForgotPassword = async () => {
     try {
@@ -13,6 +15,7 @@ export default function ForgotPassword() {
       setMessage("Password reset email sent");
       setEmail("");
       setError("");
+      router.push("/ResetPassword");
     } catch (err) {
       setError("Error sending password reset email");
     }
