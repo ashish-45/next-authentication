@@ -8,7 +8,8 @@ export function middleware(request: NextRequest) {
     path === "/Login" ||
     path === "/Signup" ||
     path === "/verifyemail" ||
-    path === "/forgotPassword";
+    path === "/forgotPassword" ||
+    path === "/ResetPassword";
 
   const token = request.cookies.get("token")?.value || "";
 
@@ -29,5 +30,6 @@ export const config = {
     "/Login",
     "/verifyemail",
     "/forgotPassword",
+    "/ResetPassword"
   ],
 };

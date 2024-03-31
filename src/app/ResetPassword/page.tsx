@@ -1,16 +1,16 @@
 "use client";
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect} from "react";
 import Axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-const PasswordResetForm = () => {
+const ResetPassword = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
 
-  const { token } = router.query; 
+  const { token } = router.query;
 
   useEffect(() => {
     if (!token) {
@@ -25,7 +25,7 @@ const PasswordResetForm = () => {
         setError("Passwords do not match");
         return;
       }
-      await Axios.post("/API/Users/ResetPassword", { token, newPassword });
+      await Axios.post("/API/Users/ResetPassword", { newPassword,token});
       setMessage("Password reset successful.");
       setError("");
       setConfirmPassword("");
@@ -55,7 +55,7 @@ const PasswordResetForm = () => {
         required
         className="text-black"
       />
-      <button type="submit" onClick={handleResetPassword}>
+      <button type="submit" className="bg-pink-200 p-2" onClick={handleResetPassword}>
         Reset Password
       </button>
       {message && (
@@ -66,4 +66,4 @@ const PasswordResetForm = () => {
   );
 };
 
-export default PasswordResetForm;
+export default ResetPassword;
