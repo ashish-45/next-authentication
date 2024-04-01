@@ -41,7 +41,7 @@ export default function SignupPage() {
         value={user.username}
         onChange={(e) => setUser({ ...user, username: e.target.value })}
         placeholder="Username"
-        className="border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
+        className="border text-black border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
         autoComplete="off"
       />
       <label htmlFor="email" className="text-gray-800">Email</label>
@@ -51,7 +51,7 @@ export default function SignupPage() {
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         placeholder="Email"
-        className="border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
+        className="border text-black border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
         autoComplete="off"
       />
       <label htmlFor="password" className="text-gray-800">Password</label>
@@ -61,7 +61,7 @@ export default function SignupPage() {
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="Password"
-        className="border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
+        className="border text-black border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
         autoComplete="off"
       />
       <button

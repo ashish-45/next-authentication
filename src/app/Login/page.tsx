@@ -9,6 +9,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [error,setError] = useState("");
 
   const [user, setUser] = useState({
     email: "",
@@ -23,6 +24,7 @@ export default function LoginPage() {
       toast.success("Login Success");
       router.push("/Profile");
     } catch (err: any) {
+      setError("User not found or incorrect password.");
       toast.error("Login Failed", err.message);
       setLoading(false);
     }
@@ -34,6 +36,13 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
+    {
+      error && (
+          <h2 className="p-2 bg-orange-400 text-black">
+            {error}
+          </h2>
+      )
+    }
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{loading ? "Processing" : "Login"}</h1>
 
       <label htmlFor="email" className="text-gray-800">Email</label>
@@ -43,7 +52,7 @@ export default function LoginPage() {
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         placeholder="Email"
-        className="border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
+        className="border border-gray-300 text-black rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
       />
       <label htmlFor="password" className="text-gray-800">Password</label>
       <input
@@ -52,7 +61,7 @@ export default function LoginPage() {
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="Password"
-        className="border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
+        className="border border-gray-300 text-black rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300 w-80"
       />
       <button
         className={`p-2 max-w-80 inline bg-blue-500 mt-3 text-white rounded-lg ${buttonDisabled ? "cursor-not-allowed opacity-50" : "hover:bg-blue-600"}`}
