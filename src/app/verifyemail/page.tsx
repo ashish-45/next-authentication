@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ export default function VerifyEmail() {
 
   const VerifyUserEmail = async () => {
     try {
-      await Axios.post("/API/Users/verifyemail",{token})
+      await Axios.post("/API/Users/verifyemail", { token });
       setVerified(true);
     } catch (err: any) {
       setError(true);
@@ -31,21 +31,24 @@ export default function VerifyEmail() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-4xl">Verify Email</h1>
-      <h2 className="p-2 bg-orange-400 text-black">
-        {token ? `${token}` : "No Token"}
-      </h2>
-      {verified && (
-        <div>
-          <h2 className="text-2xl">Email Verified</h2>
-          <Link href="/Login">Login</Link>
-        </div>
-      )}
-      {error && (
-        <div>
-          <h2 className="text-2xl bg-red-400">Error</h2>
-        </div>
-      )}
+      <h1 className="text-4xl font-bold mb-8">Verify Email</h1>
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-xl mb-4 text-black">Token:</h2>
+        <p className="bg-orange-400 text-black p-2 rounded-md">{token ? `${token}` : "No Token"}</p>
+        {verified && (
+          <div className="mt-6">
+            <h2 className="text-2xl text-green-500">Email Verified</h2>
+            <Link href="/Login">
+              <span className="text-blue-500 mt-2 block">Login</span>
+            </Link>
+          </div>
+        )}
+        {error && (
+          <div className="mt-6">
+            <h2 className="text-2xl text-red-500">Error</h2>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
